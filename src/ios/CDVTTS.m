@@ -53,7 +53,7 @@
     NSString* text = [options objectForKey:@"text"];
     NSString* locale = [options objectForKey:@"locale"];
     NSString* voiceType = [options objectForKey:@"voiceType"];
-    NSString* voiceUri = [options objectsForKey:@"voiceURI"];
+    NSString* voiceUri = [options objectForKey:@"voiceURI"];
 
     double rate = [[options objectForKey:@"rate"] doubleValue];
     NSString* voice;
