@@ -53,7 +53,7 @@
     NSString* text = [options objectForKey:@"text"];
     NSString* locale = [options objectForKey:@"locale"];
     NSString* voiceType = [options objectForKey:@"voiceType"];
-    NSString* voiceUri = [options objectForKey:@"voiceURI"];
+    NSString* voiceURI = [options objectForKey:@"voiceURI"];
 
     double rate = [[options objectForKey:@"rate"] doubleValue];
     NSString* voice;
@@ -75,8 +75,13 @@
     
     AVSpeechUtterance* utterance = [[AVSpeechUtterance new] initWithString:text];
     //utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:locale];
+    
+    
     // utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier:voice];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier:voiceURI];
+    
+    
+    
     // Rate expression adjusted manually for a closer match to other platform.
     //utterance.rate = (AVSpeechUtteranceMinimumSpeechRate * 1.5 + AVSpeechUtteranceDefaultSpeechRate) / 2.25 * rate * rate;
     // workaround for https://github.com/vilic/cordova-plugin-tts/issues/21
