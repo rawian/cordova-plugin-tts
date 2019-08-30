@@ -41,11 +41,7 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
       withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
 
-    NSDictionary* options = [command.arguments objectAtIndex:0];
-    
-    NSString* text = [options objectForKey:@"text"];    
-    NSString* voiceURI = [options objectForKey:@"voiceURI"];
-    double rate = [[options objectForKey:@"rate"] doubleValue];  
+     
 
     if (callbackId) {
         lastCallbackId = callbackId;
@@ -54,7 +50,13 @@
     callbackId = command.callbackId;
     
     [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+
+    NSDictionary* options = [command.arguments objectAtIndex:0];
     
+    NSString* text = [options objectForKey:@"text"];    
+    NSString* voiceURI = [options objectForKey:@"voiceURI"];
+    double rate = [[options objectForKey:@"rate"] doubleValue]; 
+
     if (!voiceURI || (id)voiceURI == [NSNull null]) {
         voiceURI = @"com.apple.ttsbundle.siri_male_en-US_compact";
     }
